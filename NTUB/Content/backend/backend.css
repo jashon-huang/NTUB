@@ -1,0 +1,1223 @@
+﻿/* 首頁 */
+.header-bg {
+    background-image: url('../../images/backend/blue_waves.png');
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100px;
+    width: 1280px;
+}
+
+#logo {
+    position: absolute;
+    top: 15px;
+    left: 40px;
+}
+
+#evaluation {
+    position: absolute;
+    top: 12px;
+    left: 347px;
+}
+
+#points {
+    position: absolute;
+    top: 12px;
+    left: 235px;
+}
+
+#signout {
+    position: absolute;
+    top: 33px;
+    left: 1130px;
+}
+
+.background {
+    background-image: url('../../images/backend/back.png');
+}
+
+#menubar {
+    float: left;
+    width: 180px;
+    margin-top: 19px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+a.menu1.active, a.menu1:focus, a.menu1:hover, a.menu1:active {
+    background-color: #626262;
+    font-weight: bolder;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+a.menu2.active, a.menu2:focus, a.menu2:hover, a.menu2:active {
+    color: #ffffff;
+    background-color: #f28a0d;
+    font-weight: bolder;
+}
+
+a.menu3.active, a.menu3:focus, a.menu3:hover, a.menu3:active {
+    font-weight: bolder;
+    color: #f28a0d;
+    text-decoration: none;
+}
+
+.menu1, a.menu1 {
+    color: #ffffff;
+    font-size: 20px;
+    font-family: '微軟正黑體';
+    display: block;
+    padding-top: 6px;
+    padding-bottom: 7px;
+    padding-left: 25px;
+}
+
+.menu2, a.menu2 {
+    color: #333333;
+    font-size: 16px;
+    font-family: '微軟正黑體';
+    padding-top: 9px;
+    padding-bottom: 8px;
+    padding-left: 25px;
+    background-color: #a0a0a0;
+    display: block;
+}
+
+.menu3, a.menu3 {
+    color: #808080;
+    font-size: 16px;
+    padding-left: 30px;
+    padding-top: 3px;
+    padding-bottom: 4px;
+    font-family: '微軟正黑體';
+    background-color: #e5e5e5;
+    display: block;
+}
+
+.subitem .menu3:first-child {
+    padding-top: 7px;
+}
+
+.subitem .menu3:last-child {
+    padding-bottom: 5px;
+}
+
+.menu1 .mnutext {
+    display: inline-block;
+    background: url('../../images/triangle.png') no-repeat right center;
+    padding-right: 21px;
+}
+
+.menu1.active .mnutext {
+    background: url('../../images/triangle-1.png') no-repeat right center;
+    padding-right: 25px;
+}
+
+.menu2 .mnutext {
+    display: inline-block;
+    background: url('../../images/sign1.png') no-repeat right 5px;
+    padding-right: 17px;
+}
+
+    .menu2 .mnutext.nochild, .menu2 .mnutext:hover, .menu2:hover .mnutext {
+        display: inline-block;
+        background: none;
+        padding-right: 0px;
+    }
+
+.menu2.active .mnutext {
+    background: url('../../images/sign2.png') no-repeat right center;
+    padding-right: 20px;
+}
+
+.menu2.active .nochild {
+    background: none;
+}
+
+.fix-center {
+    width: 1280px;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 0px;
+    top: 0px;
+}
+
+.foot-bar {
+    background-color: #3b444e;
+    height: 40px;
+}
+
+.foot_text {
+    color: #ffffff;
+    font-family: '微軟正黑體';
+    font-size: 15px;
+    text-align: center;
+    padding-top: 9px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.txt03 {
+    margin-left: 11px;
+    margin-right: 11px;
+}
+
+#txtMsg {
+    text-align: center;
+}
+
+#btnCloseModel {
+    margin-top: 20px;
+    cursor: pointer;
+    height: 30px;
+    width: 100px;
+    font-size: 18px;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    line-height: 30px;
+    background-color: #f28a0d;
+    border-radius: 5px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.edit_bg {
+    background-color: #d5e9a1;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.sel_menu {
+    margin-left: auto;
+    margin-right: auto;
+    height: 25px;
+}
+
+.sel_sep {
+    height: 25px;
+    width: 10px;
+    float: left;
+}
+
+.sel_area {
+    width: calc((1000px - 10px) / 7);
+    display: table-cell;
+}
+
+.sel_text {
+    line-height: 18px;
+    font-size: 16px;
+}
+
+.optionLine {
+    margin-top: 5px;
+    width: 1000px;
+    border-bottom: 5px solid #cccccc;
+    height: 35px;
+}
+
+    .optionLine.active {
+        border-bottom: 5px solid #ad2411;
+    }
+
+.option_Menu {
+    width: 150px;
+    height: 30px;
+    border-radius: 5px 5px 0px 0px;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    border-bottom: 0px;
+    margin-bottom: 5px;
+    text-align: center;
+    padding-top: 5px;
+    display: block;
+    margin-right: 10px;
+    margin-left: 0px;
+    float: left;
+    font-family: '微軟正黑體';
+    font-size: 16px;
+    color: #cccccc;
+}
+
+    .option_Menu.alt {
+        margin-right: 0px;
+        margin-left: 10px;
+        float: right;
+    }
+
+    .option_Menu.active {
+        background-color: #ad2411;
+        border-color: #ad2411;
+        font-weight: bolder;
+        color: #fff;
+    }
+
+
+.tbg {
+    background-color: transparent;
+    border-width: 0px;
+    border: 0px;
+}
+
+.list-group {
+    margin-bottom: 0px;
+}
+
+.collapse.in {
+    background-color: #626262;
+}
+
+
+.f_tb {
+    display: table;
+}
+
+    .f_tb div {
+        display: table-cell;
+        vertical-align: middle;
+        text-indent: 5px;
+    }
+
+.dot {
+    font-size: 8px;
+    line-height: 18px;
+}
+
+.headerH {
+    height: 100px;
+    margin-top: 0px;
+    top: 0px;
+    position: absolute;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* 上方P 點數*/
+#pointBox {
+    position: absolute;
+    top: 57px;
+    left: 224px;
+    height: 21px;
+    width: 58px;
+    background-color: #ad2510;
+    border-radius: 13px;
+    font-family: 'Arial';
+    font-weight: bold;
+    font-size: 15px;
+    color: #ffffff;
+    text-align: center;
+    -webkit-transform: scale(1.22, 1.24);
+    -ms-transform: scale(1.22, 1.24);
+    transform: scale(1.22, 1.24);
+    line-height: 22px;
+}
+
+#newBox {
+    position: absolute;
+    top: 57px;
+    left: 338px;
+    height: 21px;
+    width: 58px;
+    background-color: #ad2510;
+    border-radius: 13px;
+    font-family: 'Arial';
+    font-weight: bold;
+    font-size: 15px;
+    color: #ffffff;
+    text-align: center;
+    -webkit-transform: scale(1.22, 1.24);
+    -ms-transform: scale(1.22, 1.24);
+    transform: scale(1.22, 1.24);
+    line-height: 22px;
+}
+
+#nonewBox {
+    position: absolute;
+    top: 57px;
+    left: 352px;
+    height: 21px;
+    width: 24px;
+    background-color: #ad2510;
+    border-radius: 13px;
+    font-family: 'Arial';
+    font-weight: bold;
+    font-size: 15px;
+    color: #ffffff;
+    text-align: center;
+    -webkit-transform: scale(1.22, 1.24);
+    -ms-transform: scale(1.22, 1.24);
+    transform: scale(1.22, 1.24);
+    line-height: 22px;
+}
+
+.gotobuy, .gotopoint {
+    cursor: pointer;
+}
+
+
+
+/*  共用的樣式表放在這兒   */
+.mainbox {
+    padding-top: 10px;
+    padding-left: 20px;
+    font-family: "微軟正黑體";
+    font-size: 18px;
+    color: #333333;
+}
+
+    .mainbox > div {
+        width: 1000px;
+    }
+
+
+/* 標題 */
+.fdTitle {
+    font-size: 27px;
+    font-weight: bold;
+    margin-left: -12px;
+   
+}
+
+.row-1{
+    margin-bottom:10px;
+}
+.workSpace {
+}
+
+/* 分隔線 */
+.spLine {
+    height: 5px;
+    width: 1000px;
+    background-color: #dddddd;
+}
+
+.btnSizeS {
+    height: 30px;
+    width: 60px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 28px;
+    cursor: pointer;
+}
+
+.btnSizeM {
+    height: 35px;
+    width: 80px;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 33px;
+    cursor: pointer;
+}
+
+.btnSizeL {
+    height: 35px;
+    width: 120px;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 33px;
+    cursor: pointer;
+}
+
+.btnSizeXL {
+    height: 35px;
+    width: 200px;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 33px;
+    cursor: pointer;
+}
+
+.btnSizeXXL {
+    height: 35px;
+    width: 300px;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 33px;
+    cursor: pointer;
+}
+
+.btnSizeXXXL {
+    height: 35px;
+    width: 400px;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 33px;
+    cursor: pointer;
+}
+
+/*確定 */
+.btn_Ok {
+    border: 1px solid #ffffff;
+    background-color: #f28a0d;
+    color: #ffffff;
+}
+/*確認 */
+.btn_Confirm {
+    border: 1px solid #ffffff;
+    background-color: #ad2510;
+    color: #ffffff;
+}
+/*取消 */
+.btn_Cancel {
+    border: 1px solid #ffffff;
+    background-color: #ad2510;
+    color: #ffffff;
+}
+/*編輯 */
+.btn_Edit {
+    border: 1px solid #ffffff;
+    background-color: #ad2510;
+    color: #ffffff;
+}
+/*刪除 */
+.btn_Delete {
+    background-color: #535353;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+}
+/*上傳 */
+.btn_Upload {
+    background-color: #cb5b4a;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+}
+/*下載 */
+.btn_Download {
+    background-color: #2588b9;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+}
+/*資訊 */
+.btn_Info {
+    background-color: #535353;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+}
+/*排序 */
+.btn_Sort {
+    background-color: #2eb4b4;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+}
+/*匯入 */
+.btn_Import {
+    background-color: #799828;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+}
+/*全選 */
+.btn_Select {
+    background-color: transparent;
+    border: 1px solid #aaaaaa;
+    color: #777777;
+}
+
+    .btn_Select:hover {
+        border: 1px solid #ffffff;
+        background-color: #09ad7e;
+        color: #ffffff;
+    }
+/*已處理 */
+.btn_MarkProcess {
+    background-color: transparent;
+    border: 1px solid #aaaaaa;
+    color: #777777;
+}
+
+    .btn_MarkProcess:hover {
+        border: 1px solid #ffffff;
+        background-color: #c079eb;
+        color: #ffffff;
+    }
+
+.checkText {
+    color: #c079eb;
+    font-weight: bold;
+}
+/*已刪除 */
+.btn_MarkDelete {
+    background-color: transparent;
+    border: 1px solid #aaaaaa;
+    color: #777777;
+}
+
+    .btn_MarkDelete:hover {
+        border: 1px solid #ffffff;
+        background-color: #535353;
+        color: #ffffff;
+    }
+/*詳細 */
+.btn_Detail {
+    background-color: #ad2411;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+}
+/*查詢*/
+.btn_Search {
+    background-color: transparent;
+    border: 1px solid #999999;
+    color: #555555;
+    background-color: #f2fba4;
+    background-image: url('../../images/backend/search.png');
+    background-position: right center;
+    background-repeat: no-repeat;
+    text-align: left !important;
+    padding-left: 5px;
+}
+/*  .btn_Search:hover {
+        background-color: #e7f37f;
+    }*/
+
+/* 重置 */
+.btn_Reset {
+    background-color: #ad2411;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+}
+
+/* 重置 */
+.btn_MarkStop {
+    background-color: transparent;
+    border: 1px solid #aaaaaa;
+    color: #777777;
+}
+
+    .btn_MarkStop:hover {
+        border: 1px solid #ffffff;
+        background-color: #de4f3c;
+        color: #ffffff;
+    }
+.btn_Title{
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#1e5799+0,7db9e8+100 */
+background: #1e5799; /* Old browsers */
+background: -moz-linear-gradient(top,  #1e5799 0%, #7db9e8 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  #1e5799 0%,#7db9e8 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  #1e5799 0%,#7db9e8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8',GradientType=0 ); /* IE6-9 */
+
+color:#ffffff;
+
+}
+/* 日期輸入框樣式*/
+.datebox {
+    height: 35px;
+    border-radius: 5px;
+    border: 1px solid #a0a0a0;
+    font-family: 'Arial';
+    font-weight: bold;
+    font-size:18px;
+    line-height: 30px;
+    padding-left: 10px;
+    padding-top: 4px;
+    background-image: url('../../images/backend/calendar.png');
+    background-repeat: no-repeat;
+    background-position-x: 110px;
+    background-position-y: 5px;
+    width: 140px;
+}
+
+/* 文字輸入框樣式*/
+.inputbox {
+    height: 35px;
+    border-radius: 5px;
+    border: 1px solid #a0a0a0;
+    line-height: 33px;
+    padding: 0 10px 0 10px;
+    font-size: 20px;
+}
+
+    .inputbox:disabled {
+        background-color: transparent;
+        color: #a0a0a0;
+    }
+    .inputbox.center {
+        text-align:center;
+    }
+/* 文字輸入框寬度W1~W20*/
+.w1 {
+    width: 40px;
+}
+
+.w2 {
+    width: 60px;
+}
+
+.w3 {
+    width: 80px;
+}
+
+.w4 {
+    width: 100px;
+}
+
+.w5 {
+    width: 120px;
+}
+
+.w6 {
+    width: 140px;
+}
+
+.w7 {
+    width: 160px;
+}
+
+.w8 {
+    width: 180px;
+}
+
+.w9 {
+    width: 200px;
+}
+
+.w10 {
+    width: 220px;
+}
+
+.w11 {
+    width: 240px;
+}
+
+.w12 {
+    width: 260px;
+}
+
+.w13 {
+    width: 280px;
+}
+
+.w14 {
+    width: 300px;
+}
+
+.w15 {
+    width: 320px;
+}
+
+.w16 {
+    width: 340px;
+}
+
+.w17 {
+    width: 360px;
+}
+
+.w18 {
+    width: 380px;
+}
+
+.w19 {
+    width: 400px;
+}
+
+.w20 {
+    width: 420px;
+}
+
+.w30 {
+    width: 620px;
+}
+
+.txtCenter {
+    text-align: center;
+}
+.smallinfotext{
+    color:#555555;
+    font-size:14px;
+    font-weight:bold;
+}
+
+.rowArrange {
+    display: block;
+    position: relative;
+}
+
+    .rowArrange > div, .rowArrange > input, .rowArrange > textarea, .rowArrange > select {
+        display: inline-block;
+    }
+
+    .rowArrange.alignTop > div, .rowArrange.alignTop > input, .rowArrange.alignTop > textarea, .rowArrange.alignTop > select {
+        vertical-align: top;
+    }
+
+    .rowArrange.alignMiddle > div, .rowArrange.alignMiddle > input, .rowArrange.alignMiddle > textarea, .rowArrange.alignMiddle > select {
+        vertical-align: middle;
+    }
+
+    .rowArrange.alignBottom > div, .rowArrange.alignBottom > input, .rowArrange.alignBottom > textarea, .rowArrange.alignBottom > select {
+        vertical-align: bottom;
+    }
+
+.inLineArrange {
+    display: inline-block;
+    position: relative;
+}
+
+    .inLineArrange > div, .inLineArrange > input, .inLineArrange > textarea, .inLineArrange > select {
+        display: inline-block;
+    }
+
+    .inLineArrange.alignTop > div, .inLineArrange.alignTop > input, .inLineArrange.alignTop > textarea, .inLineArrange.alignTop > select {
+        vertical-align: top;
+    }
+
+    .inLineArrange.alignMiddle > div, .inLineArrange.alignMiddle > input, .inLineArrange.alignMiddle > textarea, .inLineArrange.alignMiddle > select {
+        vertical-align: middle;
+    }
+
+    .inLineArrange.alignBottom > div, .inLineArrange.alignBottom > input, .inLineArrange.alignBottom > textarea, .inLineArrange.alignBottom > select {
+        vertical-align: bottom;
+    }
+
+.rowArrange.right20 > div {
+    margin-right: 20px;
+}
+
+.xItem {
+    margin-bottom: 10px;
+}
+
+.addMore {
+    background-image: url('../../images/backend/add_cat.png');
+    width: 140px;
+    height: 25px;
+    cursor: pointer;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+}
+
+.marginTop20 {
+    margin-top: 20px;
+}
+
+.marginTop35 {
+    margin-top: 35px;
+}
+
+.marginBottom20 {
+    margin-bottom: 20px;
+}
+.marginBottom10 {
+    margin-bottom: 10px;
+}
+.marginBottom3 {
+    margin-bottom: 3px;
+}
+
+.marginBottom35 {
+    margin-bottom: 35px;
+}
+
+.marginLeft5 {
+    margin-left: 5px;
+}
+
+.marginRight5 {
+    margin-right: 5px;
+}
+
+.marginLeft10 {
+    margin-left: 10px;
+}
+
+.marginRight10 {
+    margin-right: 10px;
+}
+
+.addMoreRow {
+    position: relative;
+    display: block;
+    height: 25px;
+}
+
+.addLine {
+    width: 850px;
+    height: 1px;
+    background: #535353;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hide {
+    display: none;
+}
+
+/* 表格*/
+.superTable, .superTable th, .superTable td {
+    border: 1px solid #a0a0a0;
+}
+
+.superTable {
+    border-collapse: collapse;
+    border-bottom: 3px solid #313131;
+    padding-bottom: 3px;
+}
+
+.editbox {
+    padding: 10px;
+}
+
+.marginLeft20 {
+    margin-left: 20px;
+}
+
+.disable {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.superTable thead tr {
+    background-color: #807b7b;
+    color: #ffffff;
+}
+
+.superTable thead th {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.superTable th {
+    text-align: center;
+}
+
+.superTable td {
+    text-align: center;
+}
+
+.superTable tbody tr:nth-child(4n+1) {
+    background-color: #dddddd;
+}
+
+.superTable tbody tr:nth-child(4n+3) {
+    background-color: #f0f0f0;
+}
+
+.superTable tbody td {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+
+/*排序*/
+.sortable {
+    width: 310px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+    .sortable.grid {
+        overflow: hidden;
+    }
+
+    .sortable li {
+        list-style: none;
+        height: 35px;
+        width: 460px;
+        background-color: #d5e9a1;
+        border: 1px solid #c9c9c9;
+        border-radius: 5px;
+        margin: 10px;
+        font-family: '微軟正黑體';
+        font-size: 18px;
+        color: #333333;
+        text-align: left;
+        padding-left: 10px;
+        cursor: move;
+        line-height: 30px;
+    }
+
+    .sortable.grid li {
+        line-height: 80px;
+        float: left;
+        width: 80px;
+        height: 80px;
+        text-align: center;
+    }
+
+.handle {
+    cursor: move;
+}
+
+.sortable.connected {
+    width: 200px;
+    min-height: 100px;
+    float: left;
+}
+
+.model-title {
+    font-family: "微軟正黑體";
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.model-info {
+    font-family: "微軟正黑體";
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#addRow {
+    z-index: 10;
+}
+
+
+/* 訊息對話框*/
+.main-buttons {
+    margin-top: 20px;
+    display: block;
+    position: relative;
+}
+
+    .main-buttons > div {
+        display: inline-block;
+    }
+
+.md-btnOk {
+    cursor: pointer;
+    height: 30px;
+    width: 100px;
+    font-size: 18px;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    line-height: 30px;
+    background-color: #f28a0d;
+    border-radius: 5px;
+   
+}
+
+/* 密碼確認*/
+.md-btnOk-1 {
+    cursor: pointer;
+    height: 30px;
+    width: 100px;
+    font-size: 18px;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    line-height: 30px;
+    background-color: #f28a0d;
+    border-radius: 5px;
+    margin-left: 240px;
+}
+
+.md-btnCancel {
+    cursor: pointer;
+    height: 30px;
+    width: 100px;
+    font-size: 18px;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    line-height: 30px;
+    background-color: #ad2510;
+    margin-left: 30px;
+    border-radius: 5px;
+}
+
+.md-label {
+    text-align: center;
+}
+
+.flexBox {
+    display: flex;
+    width: 1000px;
+    padding: 20px;
+    background-color: #e7e7e7;
+    border-radius: 15px;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+.flex-item {
+    padding: 5px;
+    text-align: center;
+}
+
+.blockCenter {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.breakLine {
+    display: inline;
+    width: 960px;
+    height: 1px;
+    margin: 0px;
+}
+
+select {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+}
+
+    select::-ms-expand {
+        display: none;
+    }
+
+.selectbox {
+    height: 35px;
+    border-radius: 5px;
+    border: 1px solid #a0a0a0;
+    line-height: 33px;
+    padding: 0 10px 0 10px;
+    font-size: 20px;
+    background-image: url('../../images/backend/down.png');
+    background-position: right center;
+    background-repeat: no-repeat;
+}
+
+    .selectbox:disabled {
+        background-color: transparent;
+        color: #a0a0a0;
+        background-image: url('../../images/backend/down_disable.png');
+        background-position: right center;
+        background-repeat: no-repeat;
+    }
+
+.dash-line {
+    height: 5px;
+    width: 1000px;
+    background-image: linear-gradient(to right, #a0a0a0 20%, rgba(255, 255, 255, 0) 0%);
+    background-position: top;
+    background-size: 10px 1px;
+    background-repeat: repeat-x;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
+    position: absolute;
+    left: -9999px;
+}
+
+    [type="checkbox"]:not(:checked) + label,
+    [type="checkbox"]:checked + label {
+        position: relative;
+        padding-left: 1.45em;
+        cursor: pointer;
+    }
+
+        /* checkbox aspect */
+        [type="checkbox"]:not(:checked) + label:before,
+        [type="checkbox"]:checked + label:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 1.25em;
+            height: 1.25em;
+            border: 2px solid #ccc;
+            background: #fff;
+            border-radius: 4px;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,.1);
+        }
+        /* checked mark aspect */
+        [type="checkbox"]:not(:checked) + label:after,
+        [type="checkbox"]:checked + label:after {
+            content: '✔';
+            position: absolute;
+            top: .05em;
+            left: .1em;
+            font-size: 1.3em;
+            line-height: 0.8;
+            color: #09ad7e;
+            transition: all .2s;
+        }
+        /* checked mark aspect changes */
+        [type="checkbox"]:not(:checked) + label:after {
+            opacity: 0;
+            transform: scale(0);
+        }
+
+        [type="checkbox"]:checked + label:after {
+            opacity: 1;
+            transform: scale(1);
+        }
+/* disabled checkbox */
+[type="checkbox"]:disabled:not(:checked) + label:before,
+[type="checkbox"]:disabled:checked + label:before {
+    box-shadow: none;
+    border-color: #bbb;
+    background-color: #ddd;
+}
+
+[type="checkbox"]:disabled:checked + label:after {
+    color: #999;
+}
+
+[type="checkbox"]:disabled + label {
+    color: #aaa;
+}
+/* accessibility */
+[type="checkbox"]:checked:focus + label:before,
+[type="checkbox"]:not(:checked):focus + label:before {
+    /*border: 2px dotted blue;*/
+}
+
+/* hover style just for information */
+label:hover:before {
+    border: 2px solid #4778d9 !important;
+}
+
+label {
+    display: normal !important;
+}
+
+.ifile {
+    position: absolute;
+    left: -9999px;
+}
+
+/* 查詢筆數 共XX筆*/
+.countinfo {
+    color: #ff0000;
+    font-weight: bold;
+}
+
+#showRowCount {
+    font-weight: bold;
+    line-height:30px;
+}
+
+.alertText{
+    color:#ff0000;
+    font-weight:bold;
+}
+
+.alarmText{
+    color:#c37719;
+    font-weight:bold;
+
+
+}

@@ -1,0 +1,484 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - 好店窩超級後台</title>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/datepicker")
+    @RenderSection("scripts", required: false)
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/BackendCss")
+
+
+   
+    <link href="~/Content/ssi-modal.css" rel="stylesheet" />
+    <script src="~/Scripts/ssi-modal.js"></script>
+    
+    <script src="~/Scripts/simple_model.js"></script>
+    <link href="~/Content/basic.css" rel="stylesheet" />
+    @RenderSection("include", required: false)
+
+    @{
+
+        string strAlert = "";
+        if (TempData["hasError"] != null && (bool)TempData["hasError"])
+        {
+            strAlert = "showInfo(\"" + TempData["errMsg"] + "\");";
+        }
+        if (TempData["hasInfo"] != null && (bool)TempData["hasInfo"])
+        {
+            strAlert = "showInfo(\"" + TempData["infoMsg"] + "\");";
+        }
+        TempData["hasError"] = false;
+        TempData["hasInfo"] = false;
+    }
+    <script>
+        function numberonly() {
+            $(".inputnumber").unbind("keydown");
+            $(".inputnumber").keydown(function (e) {
+                // Allow: backspace, delete, tab, escape, enter and .
+                var limit = this.dataset.digital;
+                if (limit) {
+                    limit = parseInt(limit);
+                } else 
+                    limit=0;
+                if (e.keyCode == 190 && ( limit == 0 ||  $(this).val().indexOf(".")>=0) ) {
+                    e.preventDefault();
+                }
+                if (this.dataset.istel=="true" && $.inArray(e.keyCode, [173, 168 ,169]) !== -1) {
+                    return;
+                }
+                if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+                    // Allow: Ctrl/cmd+A
+                    (e.keyCode == 65 && (e.ctrlKey === true || e.metaKey === true)) ||
+                    // Allow: Ctrl/cmd+C
+                    (e.keyCode == 67 && (e.ctrlKey === true || e.metaKey === true)) ||
+                    // Allow: Ctrl/cmd+X
+                    (e.keyCode == 88 && (e.ctrlKey === true || e.metaKey === true)) ||
+                    // Allow: home, end, left, right
+                    (e.keyCode >= 35 && e.keyCode <= 39)) {
+                    // let it happen, don't do anything
+                    return;
+                }
+                // Ensure that it is a number and stop the keypress
+                if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                    e.preventDefault();
+                }
+                if(limit>0)  {  
+                    var idx = $(this).val().indexOf(".");
+                    if (idx >= 0) {
+                        var digital = $(this).val().substring(idx).length;
+                        if (digital >= limit && $(this).get(0).selectionStart > (idx + limit)) {
+                            e.preventDefault();
+                        }
+                    }
+                }
+               // if ($(this).get(0).selectionStart)
+            });
+        }
+
+        function pad(str, max) {
+            str = str.toString();
+            return str.length < max ? pad("0" + str, max) : str;
+        }
+        function showStatus() {
+            $.getJSON('/Super/Home/GetStatus?nocache=' + Date.now(),
+                 { cache: false },
+             function (ret) {
+                 $("#pointBox").html(pad(ret.Point, 5));
+                 $("#newBox").html(pad(ret.NewMessage, 5));
+
+                 // showInfo("aa");
+             });
+
+
+        }
+
+        function showInfo(info) {
+            /*
+                ssi_modal.notify('info', {
+                    sizeClass: 'medium',
+                    okBtn: { className: 'btn btn-primary' },
+                    center: true,
+
+                    content: info
+                }, function () { })
+                */
+            $("#txtMsg").html(info);
+            $("#msg").modal({
+                autoResize: true, title: "訊　息", titleCss: "Info",
+
+                onShow: function (dialog) {
+                    var modal = this;
+
+
+
+                    // if the user clicks "yes"
+                    $("#btnCloseModel").unbind("click");
+                    $("#btnCloseModel").bind("click", function () {
+
+                        modal.close();
+
+                    });
+                }
+
+            });
+        }
+        function showAlert(info) {
+            $("#txtMsg").html(info);
+            $("#msg").modal({
+                autoResize: true, title: "訊　息", titleCss: "Alert",
+
+                onShow: function (dialog) {
+                    var modal = this;
+
+
+
+                    // if the user clicks "yes"
+                    $("#btnCloseModel").unbind("click");
+                    $("#btnCloseModel").bind("click", function () {
+
+                        modal.close();
+
+                    });
+                }
+
+            });
+        }
+
+        function showConfirm(title, myfunc, param1, param2) {
+            $("#txtCheck").html(title);
+            $("#confirmDlg").modal({
+                autoResize: true, title: "確　認", titleCss: "Info",
+                onShow: function (dialog) {
+                    var modal = this;
+                    $("#md_btnOk").unbind("click");
+                    $("#md_btnOk").bind("click", { pa1: param1, pa2: param2 }, myfunc);
+                    $("#md_btnCancel").unbind("click");
+                    $("#md_btnCancel").show();
+                    $("#md_btnCancel").bind("click", function () {
+                        modal.close();
+                    });
+                }
+
+            });
+        }
+        function showConfirmOkOnly(title, myfunc, param1, param2) {
+            $("#txtCheck").html(title);
+            $("#confirmDlg").modal({
+                autoResize: true, title: "確　認", titleCss: "Info",
+                onShow: function (dialog) {
+                    var modal = this;
+                    $("#md_btnOk").unbind("click");
+                    $("#md_btnOk").bind("click", { pa1: param1, pa2: param2 }, myfunc);
+                    $("#md_btnCancel").hide();
+                    $("#md_btnCancel").bind("click", function () {
+                        modal.close();
+                    });
+                }
+
+            });
+        }
+
+        function initMenu(elename) {
+            var elem = $(elename);
+            elem.addClass('active');
+            var flag = true;
+            while (flag) {
+                elem = elem.parent();
+                if (elem.hasClass('collapse')) {
+                    elem.addClass('in');
+
+                } else {
+                    flag = false;
+                }
+                elem = elem.prev('a');
+                elem.addClass('active');
+                if (elem.hasClass('menu1')) {
+                    elem.children('i').removeClass("fa-caret-right");
+                    elem.children('i').addClass("fa-caret-down");
+
+                }
+                if (elem.hasClass('menu2')) {
+                    elem.children('i').removeClass("fa-chevron-right");
+                    elem.children('i').addClass("fa-chevron-down");
+
+                }
+
+
+            }
+
+
+        }
+        $(window).resize(function () {
+            var h = $(window).height() - 160;
+            $("#menubar").css("height", h);
+            $("#menubar").css("min-height", h);
+            $("#menubar").css("max-height", h);
+            $("#mainarea").css("height", h);
+            $("#mainarea").css("min-height", h);
+            $("#mainarea").css("max-height", h);
+
+
+        });
+
+
+        $(document).ready(function () {
+            showStatus();
+            setInterval(showStatus, 10000);
+
+
+            @Html.Raw(strAlert)
+            $(window).trigger('resize');
+            initMenu('@ViewBag.menuID');
+
+            $(".gotobuy").click(function () {
+                window.location.replace("/Super/User/Advice");
+            });
+
+            $(".gotopoint").click(function () {
+
+                window.location.replace("/Super/Store/PointDemand");
+
+            });
+
+            $('#sidebar > a').on('click', function (e) {
+                e.preventDefault();
+
+                if (!$(this).hasClass("active")) {
+                    var lastActive = $(this).closest("#sidebar").children(".active");
+                    lastActive.removeClass("active");
+                    lastActive.next('div').collapse('hide');
+                    lastActive.children('i').addClass("fa-caret-right");
+                    lastActive.children('i').removeClass("fa-caret-down");
+                    $(this).addClass("active");
+                    $(this).children('i').removeClass("fa-caret-right");
+                    $(this).children('i').addClass("fa-caret-down");
+                    $(this).next('div').collapse('show');
+
+                } else {
+                    $(this).removeClass("active");
+                    $(this).children('i').addClass("fa-caret-right");
+                    $(this).children('i').removeClass("fa-caret-down");
+                    $(this).next('div').collapse('hide');
+
+
+
+                }
+
+            });
+            $('.submenu').on('click', function (e) {
+                if ($(this).hasClass("nochild")) {
+                    return true;
+                }
+                e.preventDefault();
+
+
+
+                if (!$(this).hasClass("active")) {
+                    var lastActive = $(this).parent().children(".active");
+                    lastActive.removeClass("active");
+                    lastActive.next('div').collapse('hide');
+                    lastActive.children('i').addClass("fa-chevron-right");
+                    lastActive.children('i').removeClass("fa-chevron-down");
+                    $(this).addClass("active");
+                    $(this).children('i').removeClass("fa-chevron-right");
+                    $(this).children('i').addClass("fa-chevron-down");
+                    $(this).next('div').collapse('show');
+
+                } else {
+                    $(this).removeClass("active");
+                    $(this).children('i').addClass("fa-chevron-right");
+                    $(this).children('i').removeClass("fa-chevron-down");
+                    $(this).next('div').collapse('hide');
+
+
+                }
+
+            });
+            $('.datebox').datepicker({ autoclose: true, format: "yyyy/mm/dd", todayHighlight: true });
+            numberonly();
+        });
+
+    </script>
+</head>
+<body>
+    <div class="fix-center background">
+        <div style="position:relative;height:100px"> </div>
+        <div class="headerH">
+            <div style="position:relative;top:0px;">
+
+                <div class="header-bg"></div>
+                <a href="@Url.Action("Index", "Home")"><img src="~/images/logo.png" id="logo" /></a>
+                <a href="@Url.Action("Logout", "Account" )" onclick="return confirm('確定登出嗎?')"><img src="~/images/sign_out.png" id="signout" /></a>
+                <img src="~/images/evaluation-1.png" id="evaluation" class="gotobuy" />
+                <img src="~/images/points-1.png" id="points" class="gotopoint" />
+
+            </div>
+
+        </div>
+
+    </div>
+    <div class="fix-center background">
+        <div style="clear:both"></div>
+        <div id="menubar">
+            <div class="tbg">
+
+                <div id="sidebar" class="list-group">
+                    <a href="#account" class="menu1 tbg" data-parent="#sidebar">
+                        <div class="mnutext">帳號管理</div>
+                    </a>
+                    <div id="account" class="submenu1 collapse">
+
+
+                        <a id="mnu_changepassword" href="/Super/Account/ChangePassword" class="submenu menu2 tbg nochild">
+                            <div class="mnutext nochild">變更密碼</div>
+                        </a>
+
+                    </div>
+
+                    <a href="#store" class="menu1 tbg" data-parent="#sidebar">
+                        <div class="mnutext">APP點餐管理</div>
+
+                    </a>
+                    <div id="store" class="list-group subitem collapse tbg">
+
+
+                        <a id="mnu_store" href="/Super/Store/Store" class="submenu  menu2 tbg nochild">
+                            <div class="mnutext nochild">店家管理</div>
+                        </a>
+
+
+                        <a id="mnu_pointdemand" href="/Super/Store/PointDemand" class="submenu  menu2 tbg nochild">
+                            <div class="mnutext nochild">類別管理</div>
+                        </a>
+
+
+                    </div>
+
+
+
+                    <a href="#store" class="menu1 tbg" data-parent="#sidebar">
+                        <div class="mnutext">校方管理</div>
+
+                    </a>
+                    <div id="store" class="list-group subitem collapse tbg">
+
+
+                        <a id="mnu_user" href="/Super/User/UserMaintain" class="submenu  menu2 tbg nochild">
+                            <div class="mnutext nochild">科系管理</div>
+                        </a>
+
+
+                        <a id="mnu_pushlist" href="/Super/User/PushList" class="submenu  menu2 tbg nochild">
+                            <div class="mnutext nochild">教室管理</div>
+                        </a>
+                        <a id="mnu_userpointcontrol" href="/Super/User/PointControl" class="submenu  menu2 tbg nochild">
+                            <div class="mnutext nochild">會員管理</div>
+                        </a>
+ 
+                        -->
+                    </div>
+                    <a href="#Maintain" class="menu1 tbg" data-parent="#sidebar">
+                        <div class="mnutext">平台維護</div>
+
+                    </a>
+                    <div id="store" class="list-group subitem collapse tbg">
+
+
+                        <a id="mnu_employee" href="/Super/Maintain/Employee" class="submenu  menu2 tbg nochild">
+                            <div class="mnutext nochild">員工帳號管理</div>
+                        </a>
+
+                        <a id="mnu_pointlist" href="/Super/Maintain/PointList" class="submenu  menu2 tbg nochild">
+                            <div class="mnutext nochild">點數規則維護</div>
+                        </a>
+                        <a id="mnu_classify" href="/Super/Maintain/Classify" class="submenu  menu2 tbg nochild">
+                            <div class="mnutext nochild">商店分類維護</div>
+                        </a>
+                        <a id="mnu_evaluation" href="/Super/Maintain/Evaluation" class="submenu  menu2 tbg nochild">
+                            <div class="mnutext nochild">評價問題維護</div>
+                        </a>
+
+                        <a id="mnu_serviceitem" href="/Super/Maintain/ServiceItem" class="submenu  menu2 tbg nochild">
+                            <div class="mnutext nochild">商家服務項目維護</div>
+                        </a>
+                        <a id="mnu_tabledecorate" href="/Super/Maintain/TableDecorate" class="submenu  menu2 tbg nochild">
+                            <div class="mnutext nochild">商家空間型式維護</div>
+                        </a>
+                        <a id="mnu_pointprice" href="/Super/Maintain/PointPrice" class="submenu  menu2 tbg nochild">
+                            <div class="mnutext nochild">行銷點數售價維護</div>
+                        </a>
+
+                        <a id="mnu_reportmaintain" href="/Super/Maintain/ReportMaintain" class="submenu  menu2 tbg nochild">
+                            <div class="mnutext nochild">各式報表維護</div>
+                        </a>
+                        <!--
+                        <a id="mnu_advert" href="#" class="submenu  menu2 tbg nochild">
+                            <div class="mnutext nochild">付費報表維護</div>
+                        </a>
+                            -->
+                        <a id="mnu_pushtime" href="/Super/Maintain/PushTime" class="submenu  menu2 tbg nochild">
+                            <div class="mnutext nochild">推播發送時間維護</div>
+                        </a>
+
+                        <a id="mnu_sharetext" href="/Super/Maintain/ShareText" class="submenu  menu2 tbg nochild">
+                            <div class="mnutext nochild">社群分享維護</div>
+                        </a>
+                        <a id="mnu_info" href="/Super/Maintain/Info" class="submenu  menu2 tbg nochild">
+                            <div class="mnutext nochild">公司資訊維護</div>
+                        </a>
+                        <a id="mnu_downloadreport" href="/Super/Maintain/DownloadReport" class="submenu  menu2 tbg nochild">
+                            <div class="mnutext nochild">下載報表</div>
+                        </a>
+                        <a id="mnu_backup" href="/Super/Maintain/Backup" class="submenu  menu2 tbg nochild">
+                            <div class="mnutext nochild">資料備份</div>
+                        </a>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+        <div id="mainarea" style="float:left;width:1100px;padding:20px;overflow-x:hidden;overflow-y:auto;">
+
+            @RenderBody()
+            <!-- aaa-->
+        </div>
+        <div style="clear:both"></div>
+
+
+    </div>
+    <div class="fix-center foot-bar">
+
+        <div class="foot_text">
+            <div class="txt01"> © 2017 資然數位股份有限公司</div>
+            <div class="txt02">  Feelinfor Co., Ltd. </div>
+            <div class="txt03">│</div>
+            <div class="txt04">有任何問題歡迎聯絡客服信箱：</div>
+
+        </div>
+    </div>
+    <div id="msg" style="display:none;">
+        <div id="txtMsg"></div>
+        <div id="btnCloseModel" class="btn_Ok btnSizeM" >確 定</div>
+    </div>
+    <div id="confirmDlg" style="display:none;">
+        <div class="md-row-1">
+            <div class="md-label" id="txtCheck"></div>
+        </div>
+        <div class="buttons marginTop20">
+            <div class="md-btnOk" id="md_btnOk">確 定</div>
+            <div class="md-btnCancel" id="md_btnCancel">取 消</div>
+
+        </div>
+    </div>
+</body>
+</html>

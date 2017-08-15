@@ -5,6 +5,9 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="4bcd8b830c3f4898a3dab73d75b9593f" Name="Diagram1" >
+        <EntityTypeShape EntityType="ntubModel.store" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ntubModel.storeclassify" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ntubModel.user" Width="1.5" PointX="2.75" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

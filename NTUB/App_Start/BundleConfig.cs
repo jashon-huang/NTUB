@@ -26,6 +26,10 @@ namespace NTUB
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+            bundles.Add(new StyleBundle("~/Content/BackendCss").Include(
+                      "~/Content/bootstrap.css",
+                      "~/Content/bootstrap-datepicker.min.css",
+                      "~/Content/backend/backend.css"));
         }
     }
 }

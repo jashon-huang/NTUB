@@ -25,5 +25,8 @@ namespace NTUB.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<store> store { get; set; }
+        public virtual DbSet<storeclassify> storeclassify { get; set; }
+        public virtual DbSet<user> user { get; set; }
     }
 }
